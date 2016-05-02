@@ -29,15 +29,13 @@ namespace XMLWeather
             // get information about current and forecast weather from the internet
             GetData();
 
-            // take info from the current weather file and display it to the screen
-            ExtractCurrent();
-
-            // take info from the forecast weather file and display it to the screen
-            ExtractForecast();
+          
+           
         }
 
         private static void GetData()
         {
+            // taking the weather 
             WebClient client = new WebClient();
 
             string currentFile = "http://api.openweathermap.org/data/2.5/weather?q=Stratford,CA&mode=xml&units=metric&appid=3f2e224b815c0ed45524322e145149f0";
@@ -46,125 +44,9 @@ namespace XMLWeather
             client.DownloadFile(currentFile, "WeatherData.xml");
             client.DownloadFile(forecastFile, "WeatherData7Day.xml");
         }
-        private void ExtractCurrent()
-        {
-            //XmlDocument doc = new XmlDocument();
-            //doc.Load("WeatherData.xml");
+       
 
-            ////create a node variable to represent the parent element
-            //XmlNode parent;
-            //parent = doc.DocumentElement;
-
-            ////check each child of the parent element
-            //foreach (XmlNode child in parent.ChildNodes)
-            //{
-            //    // TODO if the "city" element is found display the value of it's "name" attribute
-            //    if (child.Name == "city")
-            //    {
-            //       currrentCity = child.Attributes["name"].Value;
-            //    }
-            //    if (child.Name == "temperature")
-            //    {
-            //        currentHighTemp = child.Attributes["max"].Value;
-            //        currentLowTemp = child.Attributes["min"].Value;
-            //        currentTemp = child.Attributes["value"].Value;
-            //    }
-            //    if (child.Name == "wind")
-            //    {
-            //        foreach (XmlNode grandChild in child.ChildNodes)
-            //        {
-            //            if (grandChild.Name == "speed")
-            //            {
-            //                currentWindSpeed = grandChild.Attributes["name"].Value;
-            //            }
-            //            if (grandChild.Name == "direction")
-            //            {
-            //                currentDirection = grandChild.Attributes["name"].Value;
-            //            }
-            //        }
-            //    }
-            //    if(child.Name == "weather")
-            //    {
-            //        currentConditions = Convert.ToInt32(child.Attributes["number"].Value);
-            //    }
-            //}
-        }
-
-        private void ExtractForecast()
-        {
-            XmlDocument doc = new XmlDocument();
-            doc.Load("WeatherData7Day.xml");
-
-            //create a node variable to represent the parent element
-            XmlNode parent;
-            parent = doc.DocumentElement;
-            int day = 1;
-            //check each child of the parent element
-            foreach (XmlNode child in parent.ChildNodes)
-            {
-                if (child.Name == "forecast")
-                {
-                    foreach (XmlNode grandChild in child.ChildNodes)
-                    {
-                        foreach (XmlNode greatGrandChild in grandChild.ChildNodes)
-                        {
-                            if(greatGrandChild.Name == "symbol")
-                            {
-                                //switch (day)
-                                //{
-                                //    case 1:
-                                //        break;
-                                //    case 2:
-                                //        tomorowConditions = Convert.ToInt32(grandChild.Attributes["number"].Value);
-                                //        break;
-                                //    case 3:
-                                //        tomorowTomorowConditions = Convert.ToInt32(grandChild.Attributes["number"].Value);
-                                //        break;
-                                //    case 4:
-                                //        break;
-                                //    default:
-                                //        break;
-                                //}
-                            }
-                            if (greatGrandChild.Name == "temperature")
-                            {
-                                switch(day)
-                                {
-                                    case 1:
-                                        //maxForeOut.Text = greatGrandChild.Attributes["max"].Value;
-                                        //minForeOut.Text = greatGrandChild.Attributes["min"].Value;
-                                        break;
-                                    case 2:
-                                        //tomorowTemp = greatGrandChild.Attributes["day"].Value;
-                                        //tomorowHighTemp = greatGrandChild.Attributes["max"].Value;
-                                        //tomorowLowTemp = greatGrandChild.Attributes["min"].Value;
-                                        break;
-                                    default:
-                                        break;
-                                } 
-                            }
-                            if(greatGrandChild.Name == "clouds")
-                            {
-                                switch (day)
-                                {
-                                    case 1:
-                                        //cloudLabel1.Text = greatGrandChild.Attributes["value"].Value;
-                                        day++;
-                                        break;
-                                    case 2:
-                                        //cloudLabel2.Text = greatGrandChild.Attributes["value"].Value;
-                                        day++;
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-                           
-                        }
-                    }
-                }
-            }
-        }
+      //making sure that the right picture is sent to the picture box
         public void conditionPictureChooser()
         {
             if (ds.conditions  >= 200 && ds.conditions <= 299)
@@ -211,7 +93,7 @@ namespace XMLWeather
         {
             
         }
-
+        //choosing the day to pull the weather from 
         private void dayComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
           
