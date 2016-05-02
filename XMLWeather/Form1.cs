@@ -240,6 +240,30 @@ namespace XMLWeather
                 conditionPictureChooser();
 
             }
+            else if (dayComboBox.Text == "Tomorrow's Tomorrow")
+            {
+                ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
+                whatDay = "day3";
+                ds.weatherChooser();
+                highLowTempLabel.Text = ds.highTemp + "/" + ds.lowTemp;
+                currentTempLabel.Text = ds.currentTemp + "°C";
+                windDirectionLabel.Text = ds.windDirection;
+                windSpeedLabel.Text = ds.windSpeed;
+                locationLabel.Text = ds.city;
+                conditionPictureChooser();
+            }
+            else if (dayComboBox.Text == "The Day After That")
+            {
+                ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
+                whatDay = "day4";
+                ds.weatherChooser();
+                highLowTempLabel.Text = ds.highTemp + "/" + ds.lowTemp;
+                currentTempLabel.Text = ds.currentTemp + "°C";
+                windDirectionLabel.Text = ds.windDirection;
+                windSpeedLabel.Text = ds.windSpeed;
+                locationLabel.Text = ds.city;
+                conditionPictureChooser();
+            }
         }
 
     }
