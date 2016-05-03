@@ -1,4 +1,9 @@
-﻿using System;
+﻿/// Zev Shoag
+/// An app that gets weather information and projects them
+/// in a pleasant fashion
+/// May 03 2016
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +19,9 @@ namespace XMLWeather
     
     public partial class Form1 : Form
     {
+        //declaring variables
         public static string whatDay;
-        string currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed;
-        //string tomorowCity, tomorowDirection, tomorowTemp, tomorowHighTemp, tomorowLowTemp, tomorowWindSpeed;
-        //string tomorowTomorowCity, tomorowTomorowDirection, tomorowTomorowTemp, tomorowTomorowHighTemp, tomorowTomorowLowTemp, tomorowTomorowWindSpeed;
+       string currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed;
         int currentConditions, tomorowConditions, tomorowTomorowConditions;
         Day ds;
        
@@ -89,19 +93,18 @@ namespace XMLWeather
 
         }
 
-        private void MakePictureParent()
-        {
-            
-        }
-        //choosing the day to pull the weather from 
+        
+        //choosing the day to pull the weather from by seeing what value the condition is 
         private void dayComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // first gets the location
             ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
             whatDay = "day1";
             ds.weatherChooser();
             locationLabel.Text = ds.city;
             if (dayComboBox.Text == "Today")
             {
+                //chooses all the correct values
                 ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
                 whatDay = "day1";
                 ds.weatherChooser();
@@ -112,11 +115,13 @@ namespace XMLWeather
                 locationLabel.Text = ds.city;
                 conditionPictureChooser();
                 popBox.Text = null;
+                //finds current date
                 dateLabel.Text = DateTime.Now.ToString("dddd, MMMM dd, yyy");
                
             }
             else if(dayComboBox.Text == "Tomorrow")
             {
+                //chooses all the correct values
                 ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
                 whatDay = "day2";
                 ds.weatherChooser();
@@ -124,13 +129,14 @@ namespace XMLWeather
                 currentTempLabel.Text = ds.currentTemp + "°C";
                 windDirectionLabel.Text = ds.windDirection;
                 popBox.Text = ds.windSpeed + "%";
-                //locationLabel.Text = ds.city;
                 conditionPictureChooser();
+                //finds date for 1 day in the future
                 dateLabel.Text = DateTime.Now.AddDays(1).ToString("dddd, MMMM dd, yyy");
 
             }
             else if (dayComboBox.Text == "Tomorrow's Tomorrow")
             {
+                //chooses all the correct values
                 ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
                 whatDay = "day3";
                 ds.weatherChooser();
@@ -138,12 +144,13 @@ namespace XMLWeather
                 currentTempLabel.Text = ds.currentTemp + "°C";
                 windDirectionLabel.Text = ds.windDirection;
                 popBox.Text = ds.windSpeed + "%";
-               // locationLabel.Text = ds.city;
                 conditionPictureChooser();
+                //find dates for 2 days in the future
                 dateLabel.Text = DateTime.Now.AddDays(2).ToString("dddd, MMMM dd, yyy");
             }
             else if (dayComboBox.Text == "The Day After That")
             {
+                //chooses all the correct values
                 ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
                 whatDay = "day4";
                 ds.weatherChooser();
@@ -151,8 +158,8 @@ namespace XMLWeather
                 currentTempLabel.Text = ds.currentTemp + "°C";
                 windDirectionLabel.Text = ds.windDirection;
                 popBox.Text = ds.windSpeed + "%";
-               // locationLabel.Text = ds.city;
                 conditionPictureChooser();
+                //finds date for 3 days in the future
                 dateLabel.Text = DateTime.Now.AddDays(3).ToString("dddd, MMMM dd, yyy");
             }
         }

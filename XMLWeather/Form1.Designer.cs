@@ -140,10 +140,10 @@
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Font = new System.Drawing.Font("Microsoft MHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLabel.Font = new System.Drawing.Font("Microsoft MHei", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLabel.Location = new System.Drawing.Point(459, 15);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(88, 48);
+            this.dateLabel.Size = new System.Drawing.Size(79, 43);
             this.dateLabel.TabIndex = 19;
             this.dateLabel.Text = "date";
             // 
