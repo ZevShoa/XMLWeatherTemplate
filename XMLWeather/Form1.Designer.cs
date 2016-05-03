@@ -38,6 +38,7 @@
             this.windLabel = new System.Windows.Forms.Label();
             this.conditionBox = new System.Windows.Forms.PictureBox();
             this.popBox = new System.Windows.Forms.Label();
+            this.dateLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.conditionBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,12 +137,23 @@
             this.popBox.TabIndex = 18;
             this.popBox.Text = "PoP";
             // 
+            // dateLabel
+            // 
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Font = new System.Drawing.Font("Microsoft MHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLabel.Location = new System.Drawing.Point(459, 15);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(88, 48);
+            this.dateLabel.TabIndex = 19;
+            this.dateLabel.Text = "date";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(927, 558);
+            this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.popBox);
             this.Controls.Add(this.windLabel);
             this.Controls.Add(this.conditionBox);
@@ -172,6 +184,7 @@
         private System.Windows.Forms.PictureBox conditionBox;
         private System.Windows.Forms.Label windLabel;
         private System.Windows.Forms.Label popBox;
+        private System.Windows.Forms.Label dateLabel;
     }
 }
 

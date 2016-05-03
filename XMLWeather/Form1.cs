@@ -20,7 +20,7 @@ namespace XMLWeather
         //string tomorowTomorowCity, tomorowTomorowDirection, tomorowTomorowTemp, tomorowTomorowHighTemp, tomorowTomorowLowTemp, tomorowTomorowWindSpeed;
         int currentConditions, tomorowConditions, tomorowTomorowConditions;
         Day ds;
-
+       
         public Form1()
         {
            
@@ -28,9 +28,9 @@ namespace XMLWeather
 
             // get information about current and forecast weather from the internet
             GetData();
-
-          
            
+
+
         }
 
         private static void GetData()
@@ -96,7 +96,10 @@ namespace XMLWeather
         //choosing the day to pull the weather from 
         private void dayComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+            ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
+            whatDay = "day1";
+            ds.weatherChooser();
+            locationLabel.Text = ds.city;
             if (dayComboBox.Text == "Today")
             {
                 ds = new Day(currrentCity, currentDirection, currentTemp, currentHighTemp, currentLowTemp, currentWindSpeed, currentConditions);
@@ -107,7 +110,10 @@ namespace XMLWeather
                 windDirectionLabel.Text = ds.windDirection;
                 windSpeedLabel.Text = ds.windSpeed;
                 locationLabel.Text = ds.city;
-                conditionPictureChooser(); 
+                conditionPictureChooser();
+                popBox.Text = null;
+                dateLabel.Text = DateTime.Now.ToString("dddd, MMMM dd, yyy");
+               
             }
             else if(dayComboBox.Text == "Tomorrow")
             {
@@ -117,9 +123,10 @@ namespace XMLWeather
                 highLowTempLabel.Text = ds.highTemp + "/" + ds.lowTemp;
                 currentTempLabel.Text = ds.currentTemp + "°C";
                 windDirectionLabel.Text = ds.windDirection;
-                windSpeedLabel.Text = ds.windSpeed;
-                locationLabel.Text = ds.city;
+                popBox.Text = ds.windSpeed + "%";
+                //locationLabel.Text = ds.city;
                 conditionPictureChooser();
+                dateLabel.Text = DateTime.Now.AddDays(1).ToString("dddd, MMMM dd, yyy");
 
             }
             else if (dayComboBox.Text == "Tomorrow's Tomorrow")
@@ -130,9 +137,10 @@ namespace XMLWeather
                 highLowTempLabel.Text = ds.highTemp + "/" + ds.lowTemp;
                 currentTempLabel.Text = ds.currentTemp + "°C";
                 windDirectionLabel.Text = ds.windDirection;
-                windSpeedLabel.Text = ds.windSpeed;
-                locationLabel.Text = ds.city;
+                popBox.Text = ds.windSpeed + "%";
+               // locationLabel.Text = ds.city;
                 conditionPictureChooser();
+                dateLabel.Text = DateTime.Now.AddDays(2).ToString("dddd, MMMM dd, yyy");
             }
             else if (dayComboBox.Text == "The Day After That")
             {
@@ -142,9 +150,10 @@ namespace XMLWeather
                 highLowTempLabel.Text = ds.highTemp + "/" + ds.lowTemp;
                 currentTempLabel.Text = ds.currentTemp + "°C";
                 windDirectionLabel.Text = ds.windDirection;
-                windSpeedLabel.Text = ds.windSpeed;
-                locationLabel.Text = ds.city;
+                popBox.Text = ds.windSpeed + "%";
+               // locationLabel.Text = ds.city;
                 conditionPictureChooser();
+                dateLabel.Text = DateTime.Now.AddDays(3).ToString("dddd, MMMM dd, yyy");
             }
         }
 
